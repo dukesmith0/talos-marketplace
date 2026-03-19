@@ -1,43 +1,43 @@
 {
-  "name": "talos-marketplace",
-  "description": "TALOS — persistent second brain for Claude. Memory, recall, knowledge management via Obsidian vault.",
+  "name": "loci-marketplace",
+  "description": "LOCI — persistent second brain for Claude. Memory, recall, knowledge management via Obsidian vault.",
   "owner": {
     "name": "Craig Smith"
   },
   "plugins": [
     {
-      "name": "talos-brain",
+      "name": "loci-brain",
       "description": "Core brain access — persistent memory, semantic search, capture, reflection, knowledge gaps, contradiction detection",
       "version": "1.0.0",
-      "source": "./plugins/talos-brain",
+      "source": "./plugins/loci-brain",
       "category": "productivity"
     },
     {
-      "name": "talos-code",
+      "name": "loci-code",
       "description": "Development workflow — plan, execute, review, simplify, risk analysis with persistent project memory",
       "version": "1.0.0",
-      "source": "./plugins/talos-code",
+      "source": "./plugins/loci-code",
       "category": "development"
     },
     {
-      "name": "talos-thoughts",
+      "name": "loci-thoughts",
       "description": "Structured thinking — brainstorming, Socratic dialogue, idea evaluation, deep research",
       "version": "1.0.0",
-      "source": "./plugins/talos-thoughts",
+      "source": "./plugins/loci-thoughts",
       "category": "productivity"
     },
     {
-      "name": "talos-study",
+      "name": "loci-study",
       "description": "Learning workflow — Socratic tutoring, proficiency tracking, course management, Feynman technique",
       "version": "1.0.0",
-      "source": "./plugins/talos-study",
+      "source": "./plugins/loci-study",
       "category": "productivity"
     },
     {
-      "name": "talos-career",
+      "name": "loci-career",
       "description": "Career workflow — job applications, interview prep, networking, follow-up tracking",
       "version": "1.0.0",
-      "source": "./plugins/talos-career",
+      "source": "./plugins/loci-career",
       "category": "productivity"
     }
   ]

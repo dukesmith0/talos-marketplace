@@ -1,5 +1,5 @@
 {
-  "name": "talos-marketplace",
+  "name": "loci-marketplace",
   "version": "1.0.0",
-  "description": "TALOS plugin collection — persistent second brain for Claude"
+  "description": "LOCI plugin collection — persistent second brain for Claude"
 }
