@@ -1,6 +1,6 @@
 ---
 name: talos-research
-description: Deep research combining vault knowledge and web sources
+description: "Ideas: Deep research combining vault knowledge and web sources"
 ---
 
 # /talos-research — Deep Research
@@ -33,7 +33,11 @@ What couldn't be answered, suggested next searches
 Actionable next steps based on findings
 
 ## Save
-Write research brief to vault with frontmatter `type: reference, confidence: <level>, tags: [research, <topic>]`. Append to `_brain/changelog.md`.
+Write to vault with frontmatter: `type: reference`, `confidence: <level>`, `origin: inferred` (synthesis of sources, not raw user input), tags from topic. Include `## Source` with URLs and vault refs.
+
+**Origin rule**: vault findings that come from `origin: direct` notes get higher weight than web sources. Flag any contradiction between vault direct-origin facts and web results.
+
+**Hub update**: for each tag with a hub page in `tags/`, append new reference to hub's `## Connections`.
 
 ## Activity Log
 Run via Bash: `talos log "research: <brief outcome>"`

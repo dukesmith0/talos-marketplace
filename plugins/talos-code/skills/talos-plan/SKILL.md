@@ -1,46 +1,37 @@
 ---
 name: talos-plan
-description: Decompose task into checkable plan with vault context
+description: "Code: Decompose task into checkable plan. Hub-aware, asks clarifying questions."
 ---
 
 # /talos-plan — Decompose Task into Plan
 
-## Step 0: Resolve Environment
-Get vault path: run `talos vault` via Bash, or read `vault_path` from `~/.talos/config.yaml`.
+## Step 0
+Run `talos vault` via Bash.
 
-## Steps
-1. Search vault via QMD query for similar past plans (query: 'plan <project-type>'). Reference successful patterns.
-2. Read project context:
-   - `.talos/index.md` — tech stack, structure, key components
-   - `.talos/plan.md` — any existing plan
-   - `.talos/decisions.md` — prior decisions
-   - `.talos/bugs.md` — known issues
-   - `CLAUDE.md` — project overview and conventions
-   - Recent git log (`git log --oneline -10`)
-3. **Ask clarifying questions BEFORE planning.** If any of these are unclear, ask the user:
-   - What is the desired end state? (What does "done" look like?)
-   - Are there constraints? (Timeline, tech choices, backwards compatibility)
-   - What's the scope? (MVP vs full feature, which parts are in/out)
-   - Are there dependencies on external systems or people?
-   - Do NOT guess — ambiguity in requirements leads to wasted implementation
-4. Once requirements are clear, dispatch `talos-code:planner` agent with the task description, project context, and vault references
-5. Write plan to `.talos/plan.md`:
-   - Each item completable in one sitting
-   - Include dependencies between items
-   - Mark complexity: [simple], [moderate], [complex]
+## Step 1: Gather Context
+1. Read `.talos/index.md`, `.talos/plan.md`, `.talos/decisions.md`, `.talos/bugs.md`, `CLAUDE.md`
+2. Recent `git log --oneline -10`
+3. **Hub check**: glob `tags/` for hubs matching task keywords. Read matching hubs for existing project patterns, tools used, gaps. Cross-pollinate from prior work.
 
-## Format
-```markdown
-# Plan: [Task Title]
-Started: [date]
+## Step 2: Clarify (BEFORE planning)
+Ask if unclear:
+- What does "done" look like?
+- Constraints? (timeline, tech, backwards compat)
+- Scope? (MVP vs full, in/out)
+- Dependencies on external systems/people?
 
-## Checklist
-- [ ] [simple] Item description
-- [ ] [moderate] Item description (depends on #1)
-```
+## Step 3: Plan
+Dispatch `talos-code:planner` agent with task + context + hub insights.
+
+When referencing vault knowledge for planning context, prioritize by origin:
+1. `origin: direct` — user-stated facts, requirements, constraints (highest trust)
+2. `origin: inferred` — derived from code/context (medium trust)
+3. `origin: generated` — AI-written summaries (lowest trust, verify before relying on)
+
+Write to `.talos/plan.md`:
+- Items completable in one sitting
+- Dependencies between items
+- Complexity: [simple], [moderate], [complex]
 
 ## Output
-Display the plan. Ask for approval before proceeding.
-
-## Activity Log
-Run via Bash: `talos log "plan: <brief outcome>"`
+Display plan. Ask for approval. Log: `talos log "plan: <brief outcome>"`

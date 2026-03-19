@@ -1,26 +1,22 @@
 ---
 name: talos-followup
-description: Scan for overdue follow-ups across contacts and applications
+description: "Career: Scan for overdue follow-ups across contacts and applications"
 ---
 
 # /talos-followup — Scan for Overdue Follow-ups
 
 ## Step 0: Resolve Environment
-Get vault path: run `talos vault` via Bash, or read `vault_path` from `~/.talos/config.yaml`.
+Run `talos vault` via Bash to get vault path.
 
 ## Steps
-1. Use QMD MCP query tool to search for notes with `followup` in frontmatter
-2. Compare dates to today — find overdue items
-3. Also check application files with status != rejected/closed
-4. Prioritize by:
-   - Days overdue (most overdue first)
-   - Importance (applications > contacts > general)
+1. Glob `$VAULT/career/contacts/*.md` and `$VAULT/career/applications/*.md`
+2. Read frontmatter — find notes with `followup` or `followup_date` field
+3. Compare to today — flag overdue items
+4. Prioritize: days overdue (most first), then importance (applications > contacts)
 
 ## Output
 Prioritized table:
-| Contact/Application | Follow-up Date | Days Overdue | Context | Suggested Action |
+| Name | Type | Follow-up Date | Days Overdue | Suggested Action |
 
 Offer to draft follow-up messages for selected items.
-
-## Activity Log
-Run via Bash: `talos log "followup: <brief outcome>"`
+Log: `talos log "followup: <brief outcome>"`

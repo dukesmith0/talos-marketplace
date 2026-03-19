@@ -1,6 +1,6 @@
 ---
 name: talos-ideate
-description: Idea generation with multi-perspective evaluation
+description: "Ideas: Idea generation with multi-perspective evaluation"
 ---
 
 # /talos-ideate — Idea Generation with Perspective Review
@@ -32,7 +32,9 @@ Dispatch `talos-thoughts:perspective-reviewer` agent with the ideas to score fro
 - What to avoid and why
 
 ## Save
-Save results to vault as a reference note with frontmatter `type: reference, tags: [ideation, <topic>]`.
+Save to vault as `type: idea`, `origin: generated`, tags from topic. Use `_brain/link-index.yaml` entities for wikilinks.
+
+**Hub update**: for each tag with a hub page in `tags/`, append new idea to hub's `## Connections`. If a tag appears 3+ times with no hub → auto-create via `/talos-tag`.
 
 ## Activity Log
 Run via Bash: `talos log "ideate: <brief outcome>"`

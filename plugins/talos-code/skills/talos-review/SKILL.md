@@ -1,6 +1,6 @@
 ---
 name: talos-review
-description: Code review with severity ratings and brain-aware standards
+description: "Code: Code review with severity ratings and brain-aware standards"
 ---
 
 # /talos-review — Code Review

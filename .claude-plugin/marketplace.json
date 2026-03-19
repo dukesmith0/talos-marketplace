@@ -6,10 +6,10 @@
   },
   "plugins": [
     {
-      "name": "talos-base",
+      "name": "talos-brain",
       "description": "Core brain access — persistent memory, semantic search, capture, reflection, knowledge gaps, contradiction detection",
       "version": "1.0.0",
-      "source": "./plugins/talos-base",
+      "source": "./plugins/talos-brain",
       "category": "productivity"
     },
     {

@@ -1,24 +1,22 @@
 ---
 name: talos-contact
-description: Create or lookup contacts in the vault
+description: "Career: Create or lookup contacts in the vault"
 ---
 
 # /talos-contact — Create/Lookup Contact
 
 ## Step 0: Resolve Environment
-Get vault path: run `talos vault` via Bash, or read `vault_path` from `~/.talos/config.yaml`.
+Run `talos vault` via Bash to get vault path.
 
 ## Steps
-1. Search vault for existing contact matching the name
-2. If found: display contact info and recent interactions
-3. If not found: create new contact note:
-   - Frontmatter: type: contact, name, company, role, met_date, followup_date
-   - Content: how you met, context, notes
-   - Read `_brain/schemas.yaml` for contact template
-4. Add [[wikilinks]] inline while writing (read `_brain/link-index.yaml` for known entities)
+1. Search `$VAULT/career/contacts/` for existing contact matching the name (glob `*.md`, grep name)
+2. If found: display contact card and recent interactions
+3. If not found: create `$VAULT/career/contacts/<name>.md`:
+   - Frontmatter: type, name, company, role, met, followup, aliases, `origin: direct`
+   - Content: structured table (name, company, role, context). User's words — no embellishment.
+   - Wikilinks auto-inserted for company names, technologies, locations
+4. **Hub update**: for relevant tag hubs (company, industry), append contact to `## Connections`
+5. Log: `talos log "contact: <brief outcome>"`
 
 ## Output
 Contact card with key details and linked interactions.
-
-## Activity Log
-Run via Bash: `talos log "contact: <brief outcome>"`

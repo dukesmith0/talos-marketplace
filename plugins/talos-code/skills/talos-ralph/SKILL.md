@@ -1,6 +1,6 @@
 ---
 name: talos-ralph
-description: Iterative execution loop with stuck detection
+description: "Code: Iterative execution loop with stuck detection"
 ---
 
 # /talos-ralph — Iterative Execution Loop

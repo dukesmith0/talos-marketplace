@@ -1,6 +1,6 @@
 ---
 name: talos-teach
-description: Feynman technique evaluation of concept explanations
+description: "Study: Feynman technique evaluation of concept explanations"
 ---
 
 # /talos-teach — Feynman Technique Evaluation

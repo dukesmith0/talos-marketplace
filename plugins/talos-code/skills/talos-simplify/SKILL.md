@@ -1,6 +1,6 @@
 ---
 name: talos-simplify
-description: Refactor code for clarity while preserving behavior
+description: "Code: Refactor code for clarity while preserving behavior"
 ---
 
 # /talos-simplify — Simplify Code

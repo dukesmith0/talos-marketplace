@@ -1,6 +1,6 @@
 ---
 name: talos-init
-description: Scaffold .talos/ project framework with brain registration
+description: "Code: Scaffold .talos/ project framework with brain registration"
 ---
 
 # /talos-init — Scaffold Project Framework
@@ -54,6 +54,9 @@ This step requires explicit user interaction for safety.
 
 The TALOS section to append/create:
 ```markdown
+## Git Commits
+- **NEVER add Co-Authored-By lines** to commit messages. All commits are authored solely by the user.
+
 ## TALOS Project Files
 - `.talos/index.md` — project overview, architecture, components
 - `.talos/bugs.md` — bug tracking

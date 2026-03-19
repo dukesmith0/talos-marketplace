@@ -1,6 +1,6 @@
 ---
 name: talos-risks
-description: Security and architecture risk analysis with cross-project awareness
+description: "Code: Security and architecture risk analysis with cross-project awareness"
 ---
 
 # /talos-risks — Security & Architecture Risk Analysis

@@ -1,6 +1,6 @@
 ---
 name: talos-oneshot
-description: Quick self-contained task without a plan
+description: "Code: Quick self-contained task without a plan"
 ---
 
 # /talos-oneshot — Quick Task Execution

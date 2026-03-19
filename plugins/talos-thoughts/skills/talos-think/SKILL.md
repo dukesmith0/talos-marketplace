@@ -1,6 +1,6 @@
 ---
 name: talos-think
-description: Socratic reasoning walkthrough with vault-backed insights
+description: "Ideas: Socratic reasoning walkthrough with vault-backed insights"
 ---
 
 # /talos-think — Socratic Walkthrough
@@ -22,7 +22,8 @@ Get vault path: run `talos vault` via Bash, or read `vault_path` from `~/.talos/
    - Probe assumptions: "Why do you think that?"
    - Explore edges: "What would happen if...?"
    - Guide to insight: "How does that connect to...?"
-4. After resolution, offer to save the insight to vault with proper frontmatter (type: fact or reference).
+4. When searching vault, prefer `origin: direct` notes for grounding. Flag any insight sourced from `origin: generated` notes.
+5. After resolution, offer to save the insight to vault with `origin: direct` (user reached this conclusion), proper frontmatter (type: fact or reference). Update relevant tag hubs.
 
 ## End Condition
 When the user reaches their own conclusion or explicitly asks to stop. Summarize the reasoning path taken.

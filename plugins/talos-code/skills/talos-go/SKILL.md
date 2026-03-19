@@ -1,6 +1,6 @@
 ---
 name: talos-go
-description: Execute next unchecked plan item
+description: "Code: Execute next unchecked plan item"
 ---
 
 # /talos-go — Execute Next Plan Item

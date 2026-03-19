@@ -1,6 +1,6 @@
 ---
 name: talos-diff
-description: Project git history analysis grouped by topic
+description: "Code: Project git history analysis grouped by topic"
 ---
 
 # /talos-diff — Project Git History Analysis

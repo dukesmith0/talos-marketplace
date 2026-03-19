@@ -1,6 +1,6 @@
 ---
 name: talos-study
-description: Socratic tutoring calibrated to proficiency level
+description: "Study: Socratic tutoring calibrated to proficiency level"
 ---
 
 # /talos-study — Socratic Tutoring

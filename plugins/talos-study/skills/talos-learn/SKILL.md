@@ -1,6 +1,6 @@
 ---
 name: talos-learn
-description: Quick concept lookup calibrated to proficiency level
+description: "Study: Quick concept lookup calibrated to proficiency level"
 ---
 
 # /talos-learn — Quick Concept Lookup
