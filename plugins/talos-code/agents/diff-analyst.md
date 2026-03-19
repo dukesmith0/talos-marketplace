@@ -20,7 +20,7 @@ Analyze a range of git commits, group by topic, summarize changes, and identify 
 - Read `.talos/risks.md` for known risks
 - Read `.talos/plan.md` for the current active plan
 - Git history: access via `git log` and `git diff` commands on the target repository
-- `_brain/changelog.md`: vault-level change log — cross-reference for vault-related changes
+- Daily notes in `journal/`: cross-reference for vault-related changes
 - QMD MCP tools: use `search` to find prior diff analyses in vault for continuity
 - Log analysis summary to daily note if covering active project work
 

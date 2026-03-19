@@ -42,11 +42,14 @@ Persistent knowledge brain in an Obsidian vault. Run `talos vault` to get vault 
 
 ## CLI Commands
 
-`talos vault` | `talos log` | `talos index --full` | `talos health` | `talos doctor` | `talos sync` | `talos search`
+`talos vault` | `talos log` | `talos index --full` | `talos health` | `talos doctor` | `talos sync` | `talos search` | `talos stats` | `talos update`
 
-## Retrieval Strategy
+## Retrieval Strategy (QMD-powered)
 
-1. Well-covered topic (>10 docs): QMD `search` (BM25)
-2. Sparse topic (<5 docs): QMD `query` with `vec:` prefix (semantic)
-3. Complex question: QMD `query` (hybrid + rerank)
-4. 0 results → append query to `_brain/gaps.txt`
+1. **Default**: QMD `query` (hybrid BM25 + vector + rerank) — best for most questions
+2. **Keyword-heavy**: QMD `search` (BM25 lexical) — exact term matching
+3. **Conceptual**: QMD `query` with `vec:` prefix (semantic vector) — finds related concepts
+4. **Expand**: use QMD `expandQuery` to broaden narrow searches with synonyms
+5. **0 results** → append query to `_brain/gaps.txt`
+
+After writing new content, run `talos update` to ensure QMD indexes the new files for future retrieval.

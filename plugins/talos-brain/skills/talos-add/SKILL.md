@@ -72,8 +72,8 @@ After writing the note:
    - Read the hub's `## Connections` section
    - If new note is NOT already listed: append `- [[new-note-filename]] — one-line description`
    - This keeps hub pages as **live indexes** that grow with every vault write
-2. If a tag appears on 3+ notes but has no hub → auto-create via `/talos-tag` rules
-3. Run `talos index --full` after hub updates to register new entities
+2. If a tag appears on 3+ notes but has no hub → auto-create via `/talos-hub`
+3. Run `talos update` via Bash to reindex + embed new content for search
 
 ### Log
 `talos log "add: <type> <filename> (origin: <origin>)"`

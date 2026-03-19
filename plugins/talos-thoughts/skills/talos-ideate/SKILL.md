@@ -34,7 +34,7 @@ Dispatch `talos-thoughts:perspective-reviewer` agent with the ideas to score fro
 ## Save
 Save to vault as `type: idea`, `origin: generated`, tags from topic. Use `_brain/link-index.yaml` entities for wikilinks.
 
-**Hub update**: for each tag with a hub page in `tags/`, append new idea to hub's `## Connections`. If a tag appears 3+ times with no hub → auto-create via `/talos-tag`.
+**Hub update**: for each tag with a hub page in `tags/`, append new idea to hub's `## Connections`. If a tag appears 3+ times with no hub → auto-create via `/talos-hub`.
 
 ## Activity Log
 Run via Bash: `talos log "ideate: <brief outcome>"`

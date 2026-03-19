@@ -29,8 +29,7 @@ Display this reference when asked.
 ## Knowledge Graph
 | Command | What it does |
 |---------|-------------|
-| `/talos-hub <tag>` | Deep-dive a tag hub: quality metrics, connections, gaps. |
-| `/talos-tag <name>` | Create or lookup a tag hub page. |
+| `/talos-hub <tag>` | Create, lookup, or deep-dive a tag hub. |
 
 ## Anytime
 | Command | What it does |

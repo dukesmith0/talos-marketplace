@@ -1,6 +1,6 @@
 # TALOS Marketplace
 
-A persistent second brain for Claude — memory, recall, knowledge management, and structured workflows via Obsidian vault.
+A persistent second brain for Claude Code — memory, recall, knowledge management, and structured workflows via Obsidian vault.
 
 ## Quick Start
 
@@ -12,7 +12,7 @@ cd talos-core && npm install && npm run build && npm link
 talos setup
 ```
 
-### 2. Add the Marketplace to Claude Code
+### 2. Add the Marketplace
 
 ```bash
 claude plugin marketplace add dukesmith0/talos-marketplace
@@ -20,76 +20,65 @@ claude plugin marketplace add dukesmith0/talos-marketplace
 
 ### 3. Install Plugins
 
-From within Claude Code, use `/plugin` to browse and install:
-
 ```
-/plugin install talos-base       # Recommended — core brain access
-/plugin install talos-code       # Development workflow
-/plugin install talos-thoughts   # Thinking frameworks
-/plugin install talos-study      # Learning & tutoring
-/plugin install talos-career     # Career & networking
+claude plugin install talos-brain@talos-marketplace
+claude plugin install talos-code@talos-marketplace
+claude plugin install talos-thoughts@talos-marketplace
+claude plugin install talos-study@talos-marketplace
+claude plugin install talos-career@talos-marketplace
 ```
 
-**Start with `talos-base`** — it's the foundation. All other plugins build on top of it.
+**Start with `talos-brain`** — it's the foundation. All other plugins build on top of it.
 
 ### 4. Verify
 
-Start a new Claude Code session. The SessionStart hook will load your brain context (profile, priorities, pinned memories, open threads). Type `/talos-health` to verify everything is connected.
+Start a new Claude Code session. The SessionStart hook loads your brain context. Type `/talos-help` to see all commands.
 
 ---
 
 ## Plugins
 
-### talos-base (Recommended)
+### talos-brain (Required)
 
-**Core brain access.** 19 skills, 5 agents, 4 hooks.
-
-This is the foundation plugin. It gives Claude persistent memory across sessions, semantic search over your vault, and automatic activity tracking.
+**Core brain access.** 11 skills, 8 agents, 4 hooks.
 
 | Skill | What it does |
 |-------|-------------|
-| `/talos-ask` | Quick answer using vault knowledge — search first, cite sources |
-| `/talos-brief` | Deep synthesis — everything the brain knows about a topic |
-| `/talos-recall` | Full memory retrieval — links, frequency, recency, QMD search |
-| `/talos-remember` | Store a new memory — proper schema, contradiction check, auto-link |
-| `/talos-pin` / `/talos-unpin` | Manage always-loaded memories |
-| `/talos-log` | Quick capture — timestamped entry to daily note |
-| `/talos-ingest` | Process a document into structured vault note |
-| `/talos-extract` | Pull specific topic from a document into its own note |
-| `/talos-reflect` | Analyze patterns, compress daily→weekly, promote recurring topics |
-| `/talos-fix` | Find and fix broken links, bad frontmatter, contradictions |
-| `/talos-cleanup` | Identify orphaned and stale content for archival |
-| `/talos-link` | Scan files for entities, add [[wikilinks]] |
-| `/talos-sync` | Git pull + push vault |
-| `/talos-status` | Current brain state report |
-| `/talos-health` | System health check |
-| `/talos-config` | Show configuration |
-| `/talos-setup` | Initialize brain (if CLI not installed) |
-| `/talos-help` | List all available skills |
+| `/talos-query` | Search vault + project context. Auto-depth, origin-weighted, hub-aware. |
+| `/talos-add` | Store knowledge. 5Ws extraction, origin-tracked, conflict detection, hub integration. |
+| `/talos-log` | Quick capture — timestamped entry to daily note. |
+| `/talos-reflect` | Pattern analysis, hub health, origin audit, memory consolidation. |
+| `/talos-maintain` | Diagnose + auto-repair: broken links, stale content, schema compliance, quality audit. |
+| `/talos-sync` | Git sync vault. `--status` for brain state report. |
+| `/talos-wrapup` | Session close: update .talos, crash-buffer, hub changelog, reindex, sync. |
+| `/talos-morning` | Morning briefing: calendar, priorities, open threads, vault health, quality alerts. |
+| `/talos-hub` | Create, lookup, or deep-dive a tag hub with quality metrics. |
+| `/talos-help` | List all skills by frequency of use. |
 
-**Hooks:** SessionStart (loads brain context), SessionEnd (auto-commit + update), PostToolUse (tracks file access, searches, and changes).
+**Hooks:** SessionStart (loads brain), SessionEnd (crash-buffer + auto-commit + sync), PostToolUse (tracks access + logs changes).
 
-**Agents:** researcher, linker, classifier, archivist, summarizer.
+**Agents:** classifier, hub-analyzer, session-reporter, splitter, researcher, summarizer.
+
+**Data Governance:** Origin tracking (`direct` > `inferred` > `generated`), 5Ws extraction, source preservation, feedback loop defense, hub-aware retrieval with TF-IDF scoring.
 
 ---
 
 ### talos-code
 
-**Development workflow.** 9 skills, 5 agents.
-
-Plan, build, test, review, and ship code with persistent project memory. Each project gets a `.talos/` framework with plan, bugs, decisions, risks, and headless debug scripts.
+**Development workflow.** 10 skills, 5 agents.
 
 | Skill | What it does |
 |-------|-------------|
-| `/talos-init` | Scaffold `.talos/` + generate CLAUDE.md + debug scripts |
-| `/talos-plan` | Decompose task into actionable checklist |
-| `/talos-go` | Execute next plan item — implement, test, update debug, commit |
-| `/talos-oneshot` | Quick task, no plan overhead |
-| `/talos-ralph` | Iterative loop until completion criteria met |
-| `/talos-review` | Code review with severity ratings |
-| `/talos-simplify` | Refactor for clarity, reduce complexity |
-| `/talos-risks` | Security + architecture risk analysis |
-| `/talos-diff` | Project git history analysis |
+| `/talos-init` | Scaffold `.talos/` project framework, register in brain. |
+| `/talos-plan` | Task decomposition with hub-aware context, origin-weighted. Asks clarifying questions. |
+| `/talos-go` | Execute next plan item. |
+| `/talos-ralph` | Iterative execution loop with stuck detection. |
+| `/talos-oneshot` | Quick task, no plan needed. |
+| `/talos-review` | Code review with severity ratings. |
+| `/talos-simplify` | Refactor for clarity. |
+| `/talos-risks` | Security + architecture risk analysis. |
+| `/talos-diff` | Git history analysis grouped by topic. |
+| `/talos-consolidate` | Compress .talos/ files when >200 lines. |
 
 **Agents:** codebase-explorer, planner, reviewer, validator, diff-analyst.
 
@@ -99,16 +88,14 @@ Plan, build, test, review, and ship code with persistent project memory. Each pr
 
 **Structured thinking.** 4 skills, 2 agents.
 
-Brainstorming, Socratic dialogue, idea evaluation, and deep research — all saved to the vault for future reference.
-
 | Skill | What it does |
 |-------|-------------|
-| `/talos-think` | Socratic walkthrough — guided reasoning, never gives answer directly |
-| `/talos-brainstorm` | SCAMPER brainstorming — generate, score, refine top ideas |
-| `/talos-ideate` | Idea generation with 3-perspective scoring |
-| `/talos-research` | Deep research — vault + web search → structured brief |
+| `/talos-brainstorm` | SCAMPER brainstorming with scoring. Hub-aware cross-pollination. |
+| `/talos-ideate` | Idea generation with 3-perspective scoring. Hub + origin aware. |
+| `/talos-research` | Deep research: vault + web. Origin-weighted source ranking. |
+| `/talos-think` | Socratic reasoning with vault-backed insights. |
 
-**Agents:** perspective-reviewer, brainstorm-scorer.
+**Agents:** brainstorm-scorer, perspective-reviewer.
 
 ---
 
@@ -116,14 +103,12 @@ Brainstorming, Socratic dialogue, idea evaluation, and deep research — all sav
 
 **Learning workflow.** 4 skills, 1 agent.
 
-Socratic tutoring with proficiency tracking. Adapts to your level and helps you verify understanding via Feynman technique.
-
 | Skill | What it does |
 |-------|-------------|
-| `/talos-study` | Enter study mode — Socratic tutoring for a course |
-| `/talos-teach` | Feynman technique — explain a concept, get evaluated |
-| `/talos-notes` | Capture and cross-reference course notes |
-| `/talos-learn` | Quick concept lookup at your proficiency level |
+| `/talos-study` | Socratic tutoring calibrated to proficiency level. |
+| `/talos-teach` | Feynman technique evaluation. |
+| `/talos-notes` | Course notes to vault with cross-references and hub updates. |
+| `/talos-learn` | Quick concept lookup by proficiency. |
 
 **Agents:** tutor.
 
@@ -133,34 +118,54 @@ Socratic tutoring with proficiency tracking. Adapts to your level and helps you 
 
 **Career workflow.** 4 skills, 1 agent.
 
-Job applications, interview prep, networking contacts, and follow-up tracking — all integrated with your vault profile.
-
 | Skill | What it does |
 |-------|-------------|
-| `/talos-apply` | Score job fit (3 dimensions), scaffold application tracker |
-| `/talos-prep` | Build interview/meeting prep knowledge base |
-| `/talos-contact` | Create or lookup contact with entity linking |
-| `/talos-followup` | Scan for overdue follow-ups, draft messages |
+| `/talos-apply` | Job fit scoring (3 dimensions), application tracking with hub integration. |
+| `/talos-contact` | Create/lookup contacts with origin tracking and hub updates. |
+| `/talos-prep` | Interview/meeting prep with vault context. |
+| `/talos-followup` | Scan for overdue follow-ups. |
 
 **Agents:** scorer.
 
 ---
 
+## Architecture
+
+### Data Quality (GIGO Prevention)
+
+Every vault write enforces:
+- **Origin tracking**: `direct` (user stated) > `inferred` (derived) > `generated` (AI wrote)
+- **5Ws extraction**: Who, What, When, Where, Why for ingested documents
+- **Source preservation**: Original verbatim in `## Source` section
+- **Structured output**: Tables and KV pairs over prose. No filler.
+- **Confidence gating**: ≥0.8 auto-place, 0.5-0.8 confirm, <0.5 ask user
+- **Hub dynamic updates**: Every write appends to relevant tag hub `## Connections`
+
+### Tag Hub System
+
+29 tag hub pages across 7 categories (languages, frameworks, tools, platforms, domains, methods, topics). Each hub has:
+- Factual one-line description
+- Aliases for wikilink matching
+- Live Dataview query for self-maintaining connections
+- Quality metrics (coverage, freshness, depth, gaps)
+
+### Retrieval Strategy
+
+| Scenario | Method |
+|----------|--------|
+| Well-covered topic (>10 docs) | QMD BM25 search |
+| Sparse topic (<5 docs) | QMD semantic vector search |
+| Complex question | QMD hybrid + rerank |
+| Hub exploration | Read hub page → follow connections |
+| 0 results | Log to `_brain/gaps.txt` |
+
+Results ranked by origin: `direct` first, `generated` flagged.
+
 ## Requirements
 
-- **Claude Code** — the CLI or VS Code extension
-- **TALOS Core CLI** — installed and configured (`talos setup` completed)
-- **Obsidian** — optional but recommended for browsing the vault
-- **QMD MCP** — optional, enables semantic search (auto-configured by `talos setup`)
-
-## How the Marketplace Works
-
-This repo is a Claude Code marketplace. Once added, you can browse and install individual plugins from within Claude Code:
-
-1. **Add the marketplace:** `claude plugin marketplace add dukesmith0/talos-marketplace`
-2. **Browse plugins:** Use `/plugin` in Claude Code to see available plugins
-3. **Install what you need:** Start with `talos-base`, add others as needed
-4. **Auto-updates:** Plugins track versions and update via the CLI
+- **Claude Code** (CLI or VS Code extension)
+- **TALOS Core CLI** (`talos setup` completed)
+- **Obsidian** (recommended: Calendar, Dataview, Git, QuickAdd, Templater)
 
 ## License
 

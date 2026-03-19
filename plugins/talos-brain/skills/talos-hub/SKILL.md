@@ -1,29 +1,25 @@
 ---
 name: talos-hub
-description: "Brain: Deep-dive a tag hub — quality metrics, connections, gaps, cross-pollination."
+description: "Brain: Create, lookup, or deep-dive a tag hub page with quality metrics."
 ---
 
-# /talos-hub — Hub Analysis
+# /talos-hub
 
 ## Step 0
-Run `talos vault` via Bash. Glob `tags/` to find the hub page matching the argument.
+Run `talos vault` via Bash. Glob `tags/**/*.md` to check if hub exists.
 
-## Step 1: Analyze
-Dispatch `talos-brain:hub-analyzer` agent with the tag name. Agent computes 5 quality dimensions:
-- **Accuracy**: avg confidence of linked notes (0-10)
-- **Consistency**: % with complete frontmatter (0-10)
-- **Completeness**: memory type coverage — projects/references/contacts/facts/ideas (0-10)
-- **Timeliness**: days since last linked note modified (0-10)
-- **Relevance**: inlink count relative to vault size (0-10)
-- **Overall**: average of all 5
+## If hub exists: Analyze
+Run `talos stats --hub <name>` via Bash for computed metrics. Show:
+- Health score (5 dimensions), connections by type, gaps, suggestions
+- Sibling hubs (same category) for cross-pollination ideas
 
-## Step 2: Present
-Show health table, all connections grouped by type, gaps, and suggestions.
+## If hub doesn't exist: Create
+1. Infer category: language → `tags/languages/`, framework → `tags/frameworks/`, tool → `tags/tools/`, platform → `tags/platforms/`, domain → `tags/domains/`, method → `tags/methods/`, other → `tags/topics/`
+2. Generate aliases (3+ chars only — **never** 1-2 char aliases like "js", "py")
+3. One-line description from web search or context
+4. Create file with frontmatter: type, name, category, aliases, description
+5. Add `## Live Connections` Dataview query: `` ```dataview LIST FROM [[Name]] WHERE file.name != this.file.name SORT file.mtime DESC ``` ``
+6. Run `talos index --full`
 
-If hub doesn't exist but tag appears 3+ times: offer to create it.
-
-## Step 3: Cross-Pollinate
-Read sibling hubs (same `tags/<category>/`). Suggest connections: "Python hub links to pytherm and librerag. FastAPI hub also links to librerag — consider connecting Python learning resources to FastAPI patterns."
-
-## Activity Log
-`talos log "hub: <tag> — Q=X.X, gaps: <list>"`
+## Log
+`talos log "hub: <action> <tag>"`
